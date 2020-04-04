@@ -16,16 +16,42 @@
 
 // O(a + b)
 export const getSingleNumber = (numbers: number[]) => {
-    const counts = [];
+    if (numbers.length === 0) {
+        return 0;
+    }
+
+    const numbersCount = new Map<number, number>();
 
     for (let n of numbers) {
-        if (counts[n]) {
-            counts[n]++;
+        if (numbersCount.has(n)) {
+            numbersCount.set(n, 2);
         }
         else {
-            counts[n] = 0;
+            numbersCount.set(n, 1);
         }
     }
 
-    return numbers.indexOf(1);
+    for (let count of numbersCount) {
+        if (count[1] === 1) {
+            return count[0];
+        }
+    }
+
+    return -1;
+};
+
+(numbers: number[]) => {
+    if (numbers.length === 0) {
+        return 0;
+    }
+
+    for (let i = 0; i < numbers.length; i++) {
+        const currentNumber = numbers[i];
+
+        if (numbers.indexOf(currentNumber) === numbers.lastIndexOf(currentNumber)) {
+            return currentNumber;
+        }
+    }
+
+    return -1;
 };
