@@ -4,28 +4,26 @@
 // Q2. Can the array be empty?
 
 export function moveZeroes(numbers: number[]) {
-    if (numbers.length <= 1) {
-        return numbers;
-    }
-
-    const maxIndexValue = numbers.length - 2;
-    let i = maxIndexValue;
-    while (i >= 0) {
-        const numberToTheRight = numbers[i + 1];
-        if ((numbers[i] === 0) && (numberToTheRight !== 0)) {
-            numbers[i] = numberToTheRight;
-            numbers[i + 1] = 0;
-            if (i < maxIndexValue) {
-                i++;
-            }
-            else {
-                i--;
-            }
-        }
-        else {
-            i--;
-        }
-    }
-
+  if (numbers.length <= 1) {
     return numbers;
+  }
+
+  const maxIndexValue = numbers.length - 2;
+  let i = maxIndexValue;
+  while (i >= 0) {
+    const numberToTheRight = numbers[i + 1];
+    if (numbers[i] === 0 && numberToTheRight !== 0) {
+      numbers[i] = numberToTheRight;
+      numbers[i + 1] = 0;
+      if (i < maxIndexValue) {
+        i++;
+      } else {
+        i--;
+      }
+    } else {
+      i--;
+    }
+  }
+
+  return numbers;
 }

@@ -8,29 +8,29 @@
 
 // O(n)
 const reverseString = (sourceString: string) => {
-    let reversedString = '';
+  let reversedString = "";
 
-    for (let i = sourceString.length - 1; i >= 0; i--) {
-        reversedString += sourceString[i];
-    }
+  for (let i = sourceString.length - 1; i >= 0; i--) {
+    reversedString += sourceString[i];
+  }
 
-    return reversedString;
+  return reversedString;
 };
 
 const reverseString2 = (sourceString: string) => {
-    return [...sourceString].reverse().join('');
+  return [...sourceString].reverse().join("");
 };
 
 const reverseString3 = (sourceString: string) => {
-    let reversedString = [];
+  let reversedString = [];
 
-    for (let i = sourceString.length - 1; i >= 0; i--) {
-        reversedString.push(sourceString[i]);
-    }
+  for (let i = sourceString.length - 1; i >= 0; i--) {
+    reversedString.push(sourceString[i]);
+  }
 
-    return reversedString.join('');
+  return reversedString.join("");
 };
 
-console.log(reverseString('Hi My name is Andrei'));
-console.log(reverseString2('Hi My name is Andrei'));
-console.log(reverseString3('Hi My name is Andrei'));
+console.log(reverseString("Hi My name is Andrei"));
+console.log(reverseString2("Hi My name is Andrei"));
+console.log(reverseString3("Hi My name is Andrei"));

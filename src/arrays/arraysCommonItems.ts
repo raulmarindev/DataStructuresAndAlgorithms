@@ -25,15 +25,15 @@
 
 // O(a*b)
 const containsCommonItem = (array1: string[], array2: string[]) => {
-    for (const char1 of array1) {
-        for (const char2 of array2) {
-            if (char1 === char2) {
-                return true;
-            }
-        }
+  for (const char1 of array1) {
+    for (const char2 of array2) {
+      if (char1 === char2) {
+        return true;
+      }
     }
+  }
 
-    return false;
+  return false;
 };
 
 // array1 ==> obj }
@@ -46,37 +46,35 @@ const containsCommonItem = (array1: string[], array2: string[]) => {
 
 // O(a + b)
 const containsCommonItem2 = (array1: string[], array2: string[]) => {
-    // transform array1 into object
-    // init empty object
-    const elements: any = {};
+  // transform array1 into object
+  // init empty object
+  const elements: any = {};
 
-    // for each element in array1
-    for (let item of array1) {
-        // add new property to our object with the element as name
-        elements[item] = true;
+  // for each element in array1
+  for (let item of array1) {
+    // add new property to our object with the element as name
+    elements[item] = true;
+  }
+
+  // for each element in array2
+  for (let item of array2) {
+    // if object contains element as property
+    if (elements[item]) {
+      return true;
     }
+  }
 
-    // for each element in array2
-    for (let item of array2) {
-        // if object contains element as property
-        if (elements[item]) {
-            return true;
-        }
-    }
-
-    return false;
+  return false;
 };
 
 const containsCommonItem3 = (array1: string[], array2: string[]) => {
-    return array1.some(item => array2.includes(item));
+  return array1.some(item => array2.includes(item));
 };
 
-
-
-const array1 = ['a', 'a', 'c', 'x'];
-let array2 = ['a', 'y', 'i'];
+const array1 = ["a", "a", "c", "x"];
+let array2 = ["a", "y", "i"];
 
 console.log(containsCommonItem3(array1, array2));
 
-array2 = ['z', 'y', 'x'];
+array2 = ["z", "y", "x"];
 console.log(containsCommonItem3(array1, array2));

@@ -8,63 +8,61 @@
 
 // O(n^2)
 const hasPairWithSum = (numbers: number[], sum: number) => {
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = 0; j < numbers.length; j++) {
-            if (i === j) {
-                continue;
-            }
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers.length; j++) {
+      if (i === j) {
+        continue;
+      }
 
-            if (numbers[i] + numbers[j] === sum) {
-                return true;
-            }
-        }
+      if (numbers[i] + numbers[j] === sum) {
+        return true;
+      }
     }
+  }
 
-    return false;
+  return false;
 };
 
 // O(n)
 const hasPairWithSum2 = (numbers: number[], targetSum: number) => {
-    if (numbers.length < 2) {
-        return false;
+  if (numbers.length < 2) {
+    return false;
+  }
+
+  let low = 0;
+  let high = numbers.length - 1;
+
+  do {
+    const currentSum = numbers[low] + numbers[high];
+
+    if (currentSum === targetSum) {
+      return true;
     }
 
-    let low = 0;
-    let high = numbers.length - 1;
+    if (currentSum < targetSum) {
+      low++;
+    } else {
+      high--;
+    }
+  } while (low < high);
 
-
-    do {
-        const currentSum = numbers[low] + numbers[high];
-
-        if (currentSum === targetSum) {
-            return true;
-        }
-
-        if (currentSum < targetSum) {
-            low++;
-        }
-        else {
-            high--;
-        }
-    } while (low < high);
-
-    return false;
+  return false;
 };
 
 // solution for unsorted arrays
 const hasPairWithSum3 = (numbers: number[], targetSum: number) => {
-    const complements = new Set();
+  const complements = new Set();
 
-    // [2,5,-12,]
-    for (let n of numbers) {
-        if (complements.has(n)) {
-            return true;
-        }
-
-        complements.add(targetSum - n);
+  // [2,5,-12,]
+  for (let n of numbers) {
+    if (complements.has(n)) {
+      return true;
     }
 
-    return false;
+    complements.add(targetSum - n);
+  }
+
+  return false;
 };
 
 const numbers1 = [1, 2, 3, 9];
